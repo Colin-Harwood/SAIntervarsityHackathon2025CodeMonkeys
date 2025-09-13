@@ -9,6 +9,10 @@ def main():
 #////////////////////////////////////////////////////////////////////////////////
     camera = check_camera()
     CamReadingInProgress = True
+     #makeing the camera larger and making it resizeable
+    cv2.namedWindow('Live CAM', cv2.WINDOW_NORMAL)  
+    cv2.resizeWindow('Live CAM', 1280, 720)
+    #face scanning loop
     while (CamReadingInProgress == True):
         arrFrames = get_camFrameData(camera)
         if arrFrames is not None:
