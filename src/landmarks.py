@@ -28,4 +28,5 @@ def get_landmarks(frame):
     left_eye = [landmarks_pixels[i] for i in LEFT_EYE]
     right_eye = [landmarks_pixels[i] for i in RIGHT_EYE]
 
+    #being returned as ([lefteye], [righteye])
     return (left_eye, right_eye)
