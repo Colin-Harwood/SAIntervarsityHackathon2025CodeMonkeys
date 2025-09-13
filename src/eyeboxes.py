@@ -32,7 +32,7 @@ def drawBoxes(frame , landmarks, eyesOpen):
         if y > ry_max:
             ry_max = y
     #drawing the boxes
-    if (eyesOpen == True):
+    if (eyesOpen == False):
         cv2.rectangle(frame,(int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 255, 0), 2)
         cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 255, 0), 2)
     else:
