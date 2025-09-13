@@ -2,7 +2,7 @@ import cv2
 from camera import check_camera, get_camFrameData
 from landmarks import get_landmarks
 from eyeboxes import drawBoxes
-from ear_detector import calculateEAR
+from ear_detector import calculateEAR, isDrowsy
 def main():
 #////////////////////////////////////////////////////////////////////////////////
 # Opening and showing the camera
@@ -13,8 +13,11 @@ def main():
         arrFrames = get_camFrameData(camera)
         if arrFrames is not None:
             landmarks = get_landmarks(arrFrames)
-            eyesClosed = calculateEAR(landmarks[0], landmarks[1])
-            if eyesClosed:    
+            if landmarks == None:
+                continue
+            avgEAR = calculateEAR(landmarks[0], landmarks[1])
+            eyesClosed = isDrowsy(avgEAR, 1000)
+            if eyesClosed:
                 arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
             else:
                 arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
