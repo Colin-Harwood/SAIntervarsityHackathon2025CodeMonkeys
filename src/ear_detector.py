@@ -36,6 +36,10 @@ def calculateEAR(leftEye, rightEye):
 
 
 def isDrowsy( avgEAR, drowsyFrames ,threshHold = 0.25 ):
+    if avgEAR is None :
+        print("average is empty")
+        return None
+    
     global counter   ### GLOBAL counter
 
     if avgEAR < threshHold:
