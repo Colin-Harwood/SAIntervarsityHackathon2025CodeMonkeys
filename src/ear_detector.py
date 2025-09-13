@@ -39,7 +39,7 @@ def isDrowsy( avgEAR, drowsyFrames ,threshHold = 0.25 ):
     elif avgEAR > threshHold:
         counter = 0
     
-    
+
     if counter < drowsyFrames:
         return False
     else:

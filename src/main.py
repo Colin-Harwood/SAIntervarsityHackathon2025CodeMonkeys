@@ -11,6 +11,8 @@ def main():
     while (CamReadingInProgress == True):
         arrFrames = get_camFrameData(camera)
         if arrFrames is not None:
+            landmarks = get_landmarks(arrFrames)
+            arrFrames = drawBoxes(arrFrames, landmarks)
             cv2.imshow('Live CAM', arrFrames)
             # IF 'c' is pressed the cam will stop reading
             if cv2.waitKey(1) & 0xFF == ord('c') or cv2.getWindowProperty('Live CAM', cv2.WND_PROP_VISIBLE) < 1:
@@ -20,7 +22,7 @@ def main():
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
-        
+            
 
 
     #Close the cam window
