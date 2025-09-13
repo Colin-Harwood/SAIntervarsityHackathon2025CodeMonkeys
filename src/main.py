@@ -20,11 +20,7 @@ def main():
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
-        landmarks = get_landmarks(arrFrames)
-        if landmarks is not None:
-            arrFrames = drawBoxes(arrFrames, landmarks)
-        else:
-            print("No face detected")
+        
 
 
     #Close the cam window
