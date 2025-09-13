@@ -9,10 +9,6 @@ def main():
 #////////////////////////////////////////////////////////////////////////////////
     camera = check_camera()
     CamReadingInProgress = True
-    #makeing the camera larger and making it resizeable
-    cv2.namedWindow('Live CAM', cv2.WINDOW_NORMAL)  
-    cv2.resizeWindow('Live CAM', 1280, 720)
-    #face scanning loop
     while (CamReadingInProgress == True):
         arrFrames = get_camFrameData(camera)
         if arrFrames is not None:
@@ -20,7 +16,7 @@ def main():
             if landmarks == None:
                 continue
             avgEAR = calculateEAR(landmarks[0], landmarks[1])
-            eyesClosed = isDrowsy(avgEAR, 1)
+            eyesClosed = isDrowsy(avgEAR, 5)
             if eyesClosed:
                 arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
             else:
@@ -33,7 +29,10 @@ def main():
         else:
             print("Error: Cant read the frame")
             CamReadingInProgress = False
-            break#
+            break
+            
+
+
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()
