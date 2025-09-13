@@ -23,8 +23,7 @@ def calculateEAR(leftEye, rightEye):
     leftVerticalDistance2 = math.dist(leftPoint_3, leftPoint_5)
     leftHorizontalDistance = math.dist(leftPoint_1, leftPoint_4)
 
-    LHS = (abs(leftVerticalDistance1) + abs(leftVerticalDistance2)) / 2 * leftHorizontalDistance
-
+    LHS = ( leftVerticalDistance1 + leftVerticalDistance2) / (2 * leftHorizontalDistance)
 
     rightVerticalDistance1 = math.dist(rightPoint_2, rightPoint_6)
     rightVerticalDistance2 = math.dist(rightPoint_3, rightPoint_5)
@@ -35,7 +34,11 @@ def calculateEAR(leftEye, rightEye):
     return (LHS + RHS) / 2.0
 
 
-def isDrowsy( avgEAR, drowsyFrames ,threshHold = 0.25 ):
+def isDrowsy( avgEAR, drowsyFrames, threshHold = 0.25 ):
+    if avgEAR is None :
+        print("average is empty")
+        return None
+    
     global counter   ### GLOBAL counter
 
     if avgEAR < threshHold:
