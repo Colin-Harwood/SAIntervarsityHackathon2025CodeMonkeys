@@ -29,10 +29,7 @@ def main():
         else:
             print("Error: Cant read the frame")
             CamReadingInProgress = False
-            break
-            
-
-
+            break#
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()
