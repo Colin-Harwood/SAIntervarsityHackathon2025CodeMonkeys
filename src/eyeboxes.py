@@ -2,7 +2,7 @@ import os
 import cv2
 from playsound import playsound
 import threading
-siren_path = os.path.join(os.path.dirname(__file__), "assets", "siren.wav")
+siren_path = "assets/siren.wav"
 def drawBoxes(frame , landmarks, eyesOpen):
     #getting eye cords and store them
     leftEYE, rightEYE = landmarks
@@ -44,7 +44,10 @@ def drawBoxes(frame , landmarks, eyesOpen):
         cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 0, 255), 2)
         cv2.putText(frame,"Driver Sleeping!",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 0, 255),2,cv2.LINE_AA)
         #Make a loud noise to alert the driver
-        threading.Thread(target=playsound, args=(siren_path,), daemon=True).start()
+        if os.path.isfile(siren_path):
+            threading.Thread(target=playsound, args=(siren_path,), daemon=True).start()
+        else:
+            print(f"Error: Siren file not found at {siren_path}")
 
         
     return frame
