@@ -35,8 +35,9 @@ def drawBoxes(frame , landmarks, eyesOpen):
     if (eyesOpen == False):
         cv2.rectangle(frame,(int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 255, 0), 2)
         cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 255, 0), 2)
+        cv2.putText(frame,"Eyes Open Student Studying",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 255, 0),2,cv2.LINE_AA)
     else:
         cv2.rectangle(frame, (int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 0, 255), 2)
         cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 0, 255), 2)
-
+        cv2.putText(frame,"Eyes Close Student Not Studying",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 255, 0),2,cv2.LINE_AA)
     return frame
