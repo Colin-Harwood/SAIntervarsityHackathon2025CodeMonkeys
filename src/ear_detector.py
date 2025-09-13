@@ -11,6 +11,10 @@ import math
 
     ## passed in an 2 arrays of 6 tuples (each eye is calculated individually return the ratio ##
 def calculateEAR(leftEye, rightEye):
+    if leftEye is None or rightEye is None:
+        print("Error: Cant see eyes")
+        return None
+    
     leftPoint_1, leftPoint_2, leftPoint_3, leftPoint_4, leftPoint_5, leftPoint_6 = leftEye
     rightPoint_1, rightPoint_2, rightPoint_3, rightPoint_4, rightPoint_5, rightPoint_6 = rightEye
 
@@ -39,7 +43,7 @@ def isDrowsy( avgEAR, drowsyFrames ,threshHold = 0.25 ):
     elif avgEAR > threshHold:
         counter = 0
     
-    
+
     if counter < drowsyFrames:
         return False
     else:
