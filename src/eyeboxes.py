@@ -1,9 +1,11 @@
 import cv2
 
-def drawBoxes(frame , landmarks):
+def drawBoxes(frame , landmarks, eyesOpen):
     #getting eye cords and store them
     leftEYE, rightEYE = landmarks
-
+    if (leftEYE is None or rightEYE is None):
+        print ("Error: Cant see eyes")
+        return None
     #getting dimentions for the left eye box
     lx_min, lx_max = float("inf"), float("-inf")
     ly_min, ly_max = float("inf"), float("-inf")
@@ -30,7 +32,11 @@ def drawBoxes(frame , landmarks):
         if y > ry_max:
             ry_max = y
     #drawing the boxes
-    cv2.rectangle(frame, (int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)), (0, 255, 0), 2)
-    cv2.rectangle(frame, (int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 255, 0), 2)
+    if (eyesOpen == True):
+        cv2.rectangle(frame,(int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 255, 0), 2)
+        cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 255, 0), 2)
+    else:
+        cv2.rectangle(frame, (int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 0, 255), 2)
+        cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 0, 255), 2)
 
     return frame
