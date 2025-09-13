@@ -35,7 +35,7 @@ def isDrowsy( avgEAR, drowsyFrames ,threshHold = 0.25 ):
     global counter   ### GLOBAL counter
 
     if avgEAR < threshHold:
-        ++counter
+        counter += 1
     elif avgEAR > threshHold:
         counter = 0
     
