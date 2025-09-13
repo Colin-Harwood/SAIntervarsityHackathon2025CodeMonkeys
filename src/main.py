@@ -3,10 +3,13 @@ from camera import check_camera, get_camFrameData
 from landmarks import get_landmarks
 from eyeboxes import drawBoxes
 from ear_detector import calculateEAR, isDrowsy
+from awakestats import awakeStats
 def main():
 #////////////////////////////////////////////////////////////////////////////////
 # Opening and showing the camera
 #////////////////////////////////////////////////////////////////////////////////
+    awake = 0
+    asleep = 0
     camera = check_camera()
     CamReadingInProgress = True
      #makeing the camera larger and making it resizeable
@@ -23,8 +26,10 @@ def main():
             eyesClosed = isDrowsy(avgEAR, 5)
             if eyesClosed:
                 arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
+                asleep += 1
             else:
                 arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
+                awake += 1
             cv2.imshow('Live CAM', arrFrames)
             # IF 'c' is pressed the cam will stop reading
             if cv2.waitKey(1) & 0xFF == ord('c') or cv2.getWindowProperty('Live CAM', cv2.WND_PROP_VISIBLE) < 1:
@@ -34,9 +39,7 @@ def main():
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
-            
-
-
+        awakeStats(awake,asleep)
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()
