@@ -3,7 +3,7 @@ from camera import check_camera, get_camFrameData
 from landmarks import get_landmarks
 from eyeboxes import drawBoxes
 from ear_detector import calculateEAR, isDrowsy
-from awakestats import awakeStats
+from awakestats import save_driver_name
 def main():
 #////////////////////////////////////////////////////////////////////////////////
 # Opening and showing the camera
@@ -39,7 +39,8 @@ def main():
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
-    awakeStats(awake,asleep)
+        
+    save_driver_name("Jhon",asleep, awake,"driver.txt")
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()

@@ -36,7 +36,7 @@ def calculateEAR(leftEye, rightEye):
     return (LHS + RHS) / 2.0
 
 
-def isDrowsy( avgEAR, drowsyTime = 5.0, threshHold = 0.15 ):
+def isDrowsy( avgEAR, drowsyTime = 1.0, threshHold = 0.15 ):
     if avgEAR is None :
         print("average is empty")
         return None
