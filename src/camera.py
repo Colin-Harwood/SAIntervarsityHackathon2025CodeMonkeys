@@ -14,6 +14,7 @@ def check_camera():
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 def get_camFrameData(camera):
     bReadFrame, arrFrames = camera.read()
+
     if not bReadFrame:
         print("Error: Cant read the frames!")
         return None
