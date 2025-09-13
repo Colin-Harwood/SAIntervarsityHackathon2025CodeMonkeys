@@ -1,0 +1,36 @@
+import cv2
+
+def drawBoxes(frame , landmarks):
+    #getting eye cords and store them
+    leftEYE, rightEYE = landmarks
+
+    #getting dimentions for the left eye box
+    lx_min, lx_max = float("inf"), float("-inf")
+    ly_min, ly_max = float("inf"), float("-inf")
+    for (x, y) in leftEYE:
+        if x < lx_min:
+            lx_min = x
+        if x > lx_max:
+            lx_max = x
+        if y < ly_min:
+            ly_min = y
+        if y > ly_max:
+            ly_max = y
+    
+    #getting dimentions for the right eye box
+    rx_min, rx_max = float("inf"), float("-inf")
+    ry_min, ry_max = float("inf"), float("-inf")
+    for (x, y) in rightEYE:
+        if x < rx_min:
+            rx_min = x
+        if x > rx_max:
+            rx_max = x
+        if y < ry_min:
+            ry_min = y
+        if y > ry_max:
+            ry_max = y
+    #drawing the boxes
+    cv2.rectangle(frame, (int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)), (0, 255, 0), 2)
+    cv2.rectangle(frame, (int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 255, 0), 2)
+
+    return frame

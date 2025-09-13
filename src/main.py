@@ -1,6 +1,7 @@
 import cv2
 from camera import check_camera, get_camFrameData
 from landmarks import get_landmarks
+from eyeboxes import drawBoxes
 def main():
 #////////////////////////////////////////////////////////////////////////////////
 # Opening and showing the camera
@@ -19,7 +20,12 @@ def main():
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
-        print(get_landmarks(arrFrames))
+        landmarks = get_landmarks(arrFrames)
+        if landmarks is not None:
+            arrFrames = drawBoxes(arrFrames, landmarks)
+        else:
+            print("No face detected")
+
 
     #Close the cam window
     camera.release()
