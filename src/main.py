@@ -1,5 +1,6 @@
 import cv2
 from camera import check_camera, get_camFrameData
+from landmarks import get_landmarks
 def main():
 #////////////////////////////////////////////////////////////////////////////////
 # Opening and showing the camera
@@ -13,10 +14,13 @@ def main():
             # IF 'c' is pressed the cam will stop reading
             if cv2.waitKey(1) & 0xFF == ord('c'):
                 CamReadingInProgress = False
+        
         else:
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
+        print(get_landmarks(arrFrames))
+
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()
