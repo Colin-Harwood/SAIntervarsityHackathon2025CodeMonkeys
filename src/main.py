@@ -39,7 +39,7 @@ def main():
             print("Error: Cant read the frame")
             CamReadingInProgress = False
             break
-        awakeStats(awake,asleep)
+    awakeStats(awake,asleep)
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()
