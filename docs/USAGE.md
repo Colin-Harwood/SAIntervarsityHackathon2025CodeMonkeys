@@ -22,7 +22,8 @@ npm start
 
 Check out the Demos: 
 - [Demo Video](../demo/demo.mp4)
-- [Demo Presentation](https://www.slideshare.net/secret/3ayHc1gVUP5Z7)
+- [Demo Presentation](https://www.slideshare.net/secret/1yufg2mR5V4kYG)
 
 ## 📌 Notes
 - "end session" button may cause the program to crash occasionally
+- Please note that the DEMO VIDEO can be played correctly only if you download it from the github folder

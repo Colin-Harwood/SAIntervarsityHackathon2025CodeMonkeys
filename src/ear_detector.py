@@ -1,5 +1,5 @@
 # ear_detector
-import numpy as np
+
 import math
 # passed in 6 landmarks
 
