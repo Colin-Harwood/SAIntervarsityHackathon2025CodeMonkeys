@@ -6,6 +6,7 @@ from camera import check_camera, get_camFrameData
 from landmarks import get_landmarks
 from eyeboxes import drawBoxes
 from ear_detector import calculateEAR, isDrowsy
+from awakestats import save_driver_name
 
 # Camera thread
 class CameraThread(QThread):
@@ -14,17 +15,25 @@ class CameraThread(QThread):
     def __init__(self):
         super().__init__()
         self._run_flag = True
-        self.camera = check_camera()  # your existing function
+        self.camera = check_camera()  # existing function
+        self.awake = 0
+        self.asleep = 0
 
     def run(self):
         while self._run_flag:
             arrFrames = get_camFrameData(self.camera)
             if arrFrames is not None:
                 landmarks = get_landmarks(arrFrames)
-                if landmarks is not None:
-                    avgEAR = calculateEAR(landmarks[0], landmarks[1])
-                    eyesClosed = isDrowsy(avgEAR, 5)
+                if landmarks == None:
+                    continue
+                avgEAR = calculateEAR(landmarks[0], landmarks[1])
+                eyesClosed = isDrowsy(avgEAR, 5)
+                if eyesClosed:
                     arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
+                    self.asleep += 1
+                else:
+                    arrFrames = drawBoxes(arrFrames, landmarks, eyesClosed)
+                    self.awake += 1
 
                 # Convert frame to QImage
                 rgb_image = cv2.cvtColor(arrFrames, cv2.COLOR_BGR2RGB)
@@ -35,11 +44,12 @@ class CameraThread(QThread):
             else:
                 print("Error: Can't read frame")
                 break
+        save_driver_name("Default user",self.asleep, self.awake,"driver.txt")
 
     def stop(self):
         self._run_flag = False
         self.camera.release()
-        self.wait()
+        # self.wait()
 
 # Main GUI function
 def run_camera_gui():
@@ -90,7 +100,12 @@ def run_camera_gui():
     )
 
     # Stop camera and close GUI when button clicked
-    btn.clicked.connect(lambda: cam_thread.stop() or app.quit())
+    def handle_end_session():
+        btn.setEnabled(False)  # prevent double clicks
+        cam_thread.finished.connect(app.quit)  # quit AFTER thread ends
+        cam_thread.stop()      # set _run_flag = False
+
+    btn.clicked.connect(handle_end_session)
 
     cam_thread.start()
     window.show()
