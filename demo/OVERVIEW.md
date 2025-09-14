@@ -1,29 +1,21 @@
-> *This document serves as a template for you to write a **brief overview** of your project.*
-
 # Project Overview
 
 ## 🎯 Project Name
-``` c
-// TODO: Enter your project name here
-```
+DriveAware
 
 ## 🚀 Summary
-``` c
-// TODO: Write a short, high-level description of your
-// project (2–3 sentences).
-```
+DriveAware is a computer-vision based eye-tracking software designed to prevent  drosiness related accicdents, and to help drivers stay alert.
 
 ## ✨ Key Features
-``` c
-// TODO: List key features.
-```
+- Realtime eye-tracking
+- Eye Aspect Ratio monitoring
+- Drowsiness detection
+- Audible alarm system
+- Lightweight functional approach
 
 ## 💡 Inspiration
-``` c
-// TODO: Briefly explain the motivation behind your project.
-```
+The alarming statistics on truck drivers falling asleep behind the wheel served as inspiration for this project.
 
 ## 📌 Future Improvements
-``` c
-// TODO: Mention ideas or features you’d add if given more time.
-```
+- Improve GUI
+- Improve game mechanics of the program

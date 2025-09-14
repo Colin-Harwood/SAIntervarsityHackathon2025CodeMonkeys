@@ -13,23 +13,16 @@ npm start
 ```
 
 ## 🖥️ How to Use
-``` c
-// TODO: Provide step-by-step usage instructions for judges/users.
-```
-1. Step 1 -> Do this
-2. Step 2 -> Then this
-3. Step 3 -> See the output/result
+
+1. Step 1 -> Start the program, and keep your eyes open, the program will begin tracking your eyes
+2. Step 2 -> If you close your eyes for a very short period of time (blinking) nothing will happen.
+3. Step 3 -> if your eyes remain closed for time period greater than the safety threshold then the system highlights your eyes with a red box and an audible alarm system will be sounded.
 
 ## 🎥 Demo
-``` c
-// TODO: Link your demo video and PowerPoint here
-```
+
 Check out the Demos: 
 - [Demo Video](../demo/demo.mp4)
-- [Demo Presentation](../demo/demo.pptx)
+- [Demo Presentation](https://www.slideshare.net/secret/1yufg2mR5V4kYG)
 
 ## 📌 Notes
-``` c
-// TODO: Add any special instructions, caveats, or tips
-// for using your project.
-```
+- "end session" button may cause the program to crash occasionally
