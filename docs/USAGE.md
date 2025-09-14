@@ -26,3 +26,4 @@ Check out the Demos:
 
 ## 📌 Notes
 - "end session" button may cause the program to crash occasionally
+- Please note that the DEMO VIDEO can be played correctly only if you download it from the github folder
