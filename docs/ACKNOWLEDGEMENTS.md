@@ -13,20 +13,20 @@ This document lists all **third-party repositories, modules, libraries, framewor
 ## 📦 Libraries, Frameworks & Submodules
 | Name                 | Link / Repo                                           | Author(s)       | Usage                  |
 |----------------------|-------------------------------------------------------|-----------------|------------------------|
-| IntricatePointers    | https://github.com/DnA-IntRicate/IntricatePointers    | Adam Foflonker  | Memory management      |
-| fast_obj             | https://github.com/thisistherk/fast_obj               | Richard Knight  | Parsing OBJ files      |
+| OpenCV    | https://opencv.org/    | Intel, Willow Garage, Itseez  | Computer Vision (camera access, frame processing) |
+| Mediapipe | https://github.com/google-ai-edge/mediapipe               | Google  | Facial landmark detection & tracking |
+| Pygame | https://www.pygame.org/ | Lenard Lindstrom, René Dudfield | Playing audio feedback |
+| PyQt6 | https://www.riverbankcomputing.com/software/pyqt/ | Riverbank Computing Limited | User Interface (GUI) |
 
 ---
 
 ## 🌐 APIs & Services
 | Name          | Link / Docs                        | Author(s)      | Usage                             |
 |---------------|------------------------------------|----------------|-----------------------------------|
-| OpenWeather   | https://openweathermap.org/api     | Open Weather   | Fetching weather data             |
-| Stripe        | https://stripe.com/docs/api        | Stripe         | Payment handling                  |
-
+| ChatGPT | https://chat.openai.com/ | OpenAI | Assisted with code explanations, debugging, and idea planning |
 ---
 
 ## 📊 Datasets
 | Name          | Source                              | Usage                             |
 |---------------|-------------------------------------|-----------------------------------|
-| MNIST         | http://yann.lecun.com/exdb/mnist/   | Training/testing machine learning |
+| None | - | No external datasets were used |
