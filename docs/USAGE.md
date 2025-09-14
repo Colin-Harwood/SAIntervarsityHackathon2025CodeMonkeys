@@ -4,12 +4,12 @@
 
 ## ▶️ Running the Application
 ``` c
-// TODO: Explain how to launch the project.
-// Add commands or steps here.
+Install the necessary dependencies
+Run the main.py file in the src folder 
 ```
 ``` bash
 # Example
-npm start
+py ./src/main.py
 ```
 
 ## 🖥️ How to Use
