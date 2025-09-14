@@ -1,5 +1,10 @@
+import os
 import cv2
-
+import pygame
+#loading the siren sound into pygame
+pygame.mixer.init()
+siren_path = "assets/siren.wav"
+siren = pygame.mixer.Sound(siren_path)
 def drawBoxes(frame , landmarks, eyesOpen):
     #getting eye cords and store them
     leftEYE, rightEYE = landmarks
@@ -35,9 +40,20 @@ def drawBoxes(frame , landmarks, eyesOpen):
     if (eyesOpen == False):
         cv2.rectangle(frame,(int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 255, 0), 2)
         cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 255, 0), 2)
-        cv2.putText(frame,"Eyes Open Student Studying",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 255, 0),2,cv2.LINE_AA)
+        cv2.putText(frame,"Driver Awake",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 255, 0),2,cv2.LINE_AA)
+        #stop the sound if it is playing
+        if pygame.mixer.get_busy():
+            siren.stop()
     else:
         cv2.rectangle(frame, (int(lx_min), int(ly_min)), (int(lx_max), int(ly_max)),(0, 0, 255), 2)
         cv2.rectangle(frame,(int(rx_min), int(ry_min)), (int(rx_max), int(ry_max)), (0, 0, 255), 2)
-        cv2.putText(frame,"Eyes Close Student Not Studying",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 255, 0),2,cv2.LINE_AA)
+        cv2.putText(frame,"Driver Sleeping!",(10, 30),cv2.FONT_HERSHEY_SIMPLEX,1,(0, 0, 255),2,cv2.LINE_AA)
+        #Make a loud noise to alert the driver
+        pygame.mixer.init()
+        pygame.mixer.music.load(siren_path)
+        pygame.mixer.music.play(loops=0)
+        #play the sound if it is not already playing
+        if not pygame.mixer.get_busy():
+            siren.play()
+        
     return frame

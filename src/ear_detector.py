@@ -1,6 +1,7 @@
 # ear_detector
-
 import math
+import time
+
 # passed in 6 landmarks
 
 
@@ -34,21 +35,26 @@ def calculateEAR(leftEye, rightEye):
     return (LHS + RHS) / 2.0
 
 
-def isDrowsy( avgEAR, drowsyFrames, threshHold = 0.15 ):
+def isDrowsy( avgEAR, drowsyTime = 1.0, threshHold = 0.15 ):
     if avgEAR is None :
         print("average is empty")
         return None
     
-    global counter   ### GLOBAL counter
+    global drowsy_start_time   ### GLOBAL counter
 
     if avgEAR < threshHold:
-        counter += 1
-    elif avgEAR > threshHold:
-        counter = 0
-    
-
-    if counter < drowsyFrames:
-        return False
+        # if first time dipping below threshold, start timer
+        if drowsy_start_time is None:
+            drowsy_start_time = time.time()
+        
+        # check how long it has stayed below
+        elapsed = time.time() - drowsy_start_time
+        if elapsed >= drowsyTime:
+            return True
+        else:
+            return False
     else:
-        return True
+        # reset when eyes open again
+        drowsy_start_time = None
+        return False
         

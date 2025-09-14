@@ -4,12 +4,12 @@
 
 ## ▶️ Running the Application
 ``` c
-// TODO: Explain how to launch the project.
-// Add commands or steps here.
+Install the necessary dependencies
+Run the main.py file in the src folder 
 ```
 ``` bash
 # Example
-npm start
+py ./src/main.py
 ```
 
 ## 🖥️ How to Use
@@ -21,9 +21,8 @@ npm start
 ## 🎥 Demo
 
 Check out the Demos: 
-- [Demo Video](../demo/demo.mp4)
+- [Demo Video](../demo/CodeMonkeysDemoVideo.mp4)
 - [Demo Presentation](https://www.slideshare.net/secret/1yufg2mR5V4kYG)
 
 ## 📌 Notes
 - "end session" button may cause the program to crash occasionally
-- Please note that the DEMO VIDEO can be played correctly only if you download it from the github folder
