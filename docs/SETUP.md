@@ -4,32 +4,33 @@
 
 # Setup Instructions
 
-Follow the steps below to set up and run the project. (Example)
+Follow the steps below to set up and run the project.
 
 ---
 
 ## 📦 Requirements
 ``` c
-// TODO: List software, runtimes, frameworks, and or dependencies
-// along with instructions on how to set each up.
 ```
-- Example: Node.js v18+
-- Example: Python 3.10
-- Example: Docker
+- Python 3.12
+- OpenCV 4.12
+- Mediapipe 0.10.14
+- Pygame 2.4+
+- PyQt6 6.9+
+- Docker
 
 ---
 
 ## ⚙️ Installation
 ``` bash
 # Clone the repository
-git clone <your-repo-url>
-cd <repo-name>
+git clone https://github.com/Colin-Harwood/SAIntervarsityHackathon2025CodeMonkeys
+cd SAIntervarsityHackathon2025CodeMonkeys
 
-# Install dependencies
-<insert command here>
+# Install dependencies and external libraries
+pip install -r requirements.txt
 ```
 
 ## ▶️ Running the Project
 ``` bash
-<insert run command here> # Or an explanation on what to do
+python ./src/main.py # Run the main application
 ```

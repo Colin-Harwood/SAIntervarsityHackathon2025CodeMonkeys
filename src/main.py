@@ -40,7 +40,7 @@ def main():
             CamReadingInProgress = False
             break
         
-    save_driver_name("Jhon",asleep, awake,"driver.txt")
+    save_driver_name("Default user",asleep, awake,"driver.txt")
     #Close the cam window
     camera.release()
     cv2.destroyAllWindows()
