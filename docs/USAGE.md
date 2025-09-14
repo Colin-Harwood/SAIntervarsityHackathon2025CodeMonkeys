@@ -21,7 +21,7 @@ py ./src/main.py
 ## 🎥 Demo
 
 Check out the Demos: 
-- [Demo Video](../demo/CodeMonkeysDemoVideo.mp4)
+- [Demo Video](https://drive.google.com/drive/u/1/folders/1DslGTgPfV3r0NWhzP0PkMuIbRHSFQCE6)
 - [Demo Presentation](https://www.slideshare.net/secret/1yufg2mR5V4kYG)
 
 ## 📌 Notes
